@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.AccountFragment">
+
+    <data>
+
+        <import type="com.vinh.moneymanager.libs.Helper" />
+
+        <variable
+            name="viewModel"
+            type="com.vinh.moneymanager.viewmodels.AccountViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/milk">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/oswald"
+            android:paddingVertical="6dp"
+            android:text="Tổng số dư:"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_total_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="4dp"
+            android:fontFamily="@font/oswald"
+            android:lines="1"
+            android:maxLines="1"
+            android:paddingVertical="6dp"
+            android:text="@{Helper.formatCurrency(viewModel.totalBalance)}"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="18sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_total_balance"
+            android:layout_marginStart="8dp"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_list_account"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/oswald"
+                android:text="Tài khoản"
+                android:textAppearance="@style/ChipText"
+                android:textColor="@color/chip_text_color"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:chipBackgroundColor="@color/chip_bg_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_list_transfer"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald"
+                android:text="Chuyển khoản"
+                android:textAppearance="@style/ChipText"
+                android:textColor="@color/chip_text_color"
+                android:theme="@style/Theme.MaterialComponents.Light"
+                app:chipBackgroundColor="@color/chip_bg_color" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/chip_group_account" />
+
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="8dp">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/icon" />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:ellipsize="end"
+        android:fontFamily="@font/oswald"
+        android:maxLines="1"
+        android:paddingLeft="20dp"
+        android:text="Shopping"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="17sp" />
+</LinearLayout>

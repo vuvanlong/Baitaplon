@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.vinh.moneymanager.libs.Helper" />
+
+        <variable
+            name="viewModel"
+            type="com.vinh.moneymanager.viewmodels.AddEditFinanceViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg"
+        tools:context=".activities.AddEditFinanceActivity">
+
+        <include
+            android:id="@+id/toolbar_layout"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:id="@+id/layout_sw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar_layout"
+            android:layout_marginHorizontal="4dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sw_finance_income"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@{viewModel.categoryType==Helper.TYPE_INCOME?@drawable/button_selected:@drawable/button_unselected}"
+                android:clickable="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:text="Thu nhập"
+                android:textColor="@{viewModel.categoryType==Helper.TYPE_INCOME?@color/textColorPrimary:@color/textColorSecondary}"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/sw_finance_expense"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@{viewModel.categoryType==Helper.TYPE_EXPENSE?@drawable/button_selected:@drawable/button_unselected}"
+                android:clickable="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:text="Chi tiêu"
+                android:textColor="@{viewModel.categoryType==Helper.TYPE_EXPENSE?@color/textColorPrimary:@color/textColorSecondary}"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/sw_finance_transfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:background="@{viewModel.categoryType==Helper.TYPE_TRANSFER?@drawable/button_selected:@drawable/button_unselected}"
+                android:clickable="true"
+                android:fontFamily="@font/oswald"
+                android:gravity="center"
+                android:text="Chuyển khoản"
+                android:textColor="@{viewModel.categoryType==Helper.TYPE_TRANSFER?@color/textColorPrimary:@color/textColorSecondary}"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <include
+            android:id="@+id/layout_finance_or_transfer"
+            layout="@layout/finance_transfer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_sw"
+            android:layout_marginTop="8dp"
+            bind:viewModel="@{viewModel}" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_submit_finance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_finance_or_transfer"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="@font/oswald"
+            android:text="Hoàn tất"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+</layout>
